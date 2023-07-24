@@ -9,6 +9,7 @@
 size_t list_len(const list_t *h)
 {
 	size_t i = 0;
+
 	while (h)
 	{
 		h = h->next;
@@ -28,6 +29,7 @@ char **list_to_strings(list_t *head)
 	size_t i = list_len(head), j;
 	char **strs;
 	char *str;
+
 	if (!head || !i)
 		return (NULL);
 	strs = malloc(sizeof(char *) * (i + 1));
@@ -81,7 +83,7 @@ size_t print_list(const list_t *h)
 list_t *node_starts_with(list_t *node, char *prefix, char c)
 {
 	char *p = NULL;
-	
+
 	while (node)
 	{
 		p = starts_with(node->str, prefix);
@@ -102,7 +104,7 @@ list_t *node_starts_with(list_t *node, char *prefix, char c)
 ssize_t get_node_index(list_t *head, list_t *node)
 {
 	size_t i = 0;
-	
+
 	while (head)
 	{
 		if (head == node)
