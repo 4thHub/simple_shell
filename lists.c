@@ -1,11 +1,12 @@
 #include "shell.h"
+
 /**
- *add_node - adds a node to the start of the list
- *@head: address of pointer to head node
- *@str: str field of node
- *@num: node index used by history
+ * add_node - adds a node to the start of the list
+ * @head: address of pointer to head node
+ * @str: str field of node
+ * @num: node index used by history
  *
- *Return: size of list
+ * Return: size of list
  */
 list_t *add_node(list_t **head, const char *str, int num)
 {
@@ -13,11 +14,11 @@ list_t *add_node(list_t **head, const char *str, int num)
 
 	if (!head)
 		return (NULL);
-		new_head = malloc(sizeof(list_t));
+	new_head = malloc(sizeof(list_t));
 	if (!new_head)
 		return (NULL);
-		_memset((void *)new_head, 0, sizeof(list_t));
-		new_head->num = num;
+	_memset((void *)new_head, 0, sizeof(list_t));
+	new_head->num = num;
 	if (str)
 	{
 		new_head->str = _strdup(str);
@@ -31,6 +32,7 @@ list_t *add_node(list_t **head, const char *str, int num)
 	*head = new_head;
 	return (new_head);
 }
+
 /**
  * add_node_end - adds a node to the end of the list
  * @head: address of pointer to head node
@@ -45,6 +47,7 @@ list_t *add_node_end(list_t **head, const char *str, int num)
 
 	if (!head)
 		return (NULL);
+
 	node = *head;
 	new_node = malloc(sizeof(list_t));
 	if (!new_node)
@@ -64,12 +67,13 @@ list_t *add_node_end(list_t **head, const char *str, int num)
 	{
 		while (node->next)
 			node = node->next;
-			node->next = new_node;
+		node->next = new_node;
 	}
-		else
-			*head = new_node;
-			return (new_node);
+	else
+		*head = new_node;
+	return (new_node);
 }
+
 /**
  * print_list_str - prints only the str element of a list_t linked list
  * @h: pointer to first node
@@ -89,6 +93,7 @@ size_t print_list_str(const list_t *h)
 	}
 	return (i);
 }
+
 /**
  * delete_node_at_index - deletes node at given index
  * @head: address of pointer to first node
@@ -103,6 +108,7 @@ int delete_node_at_index(list_t **head, unsigned int index)
 
 	if (!head || !*head)
 		return (0);
+
 	if (!index)
 	{
 		node = *head;
@@ -127,6 +133,7 @@ int delete_node_at_index(list_t **head, unsigned int index)
 	}
 	return (0);
 }
+
 /**
  * free_list - frees all nodes of a list
  * @head_ptr: address of pointer to head node
